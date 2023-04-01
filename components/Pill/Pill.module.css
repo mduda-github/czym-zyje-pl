@@ -1,0 +1,14 @@
+.container {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    border-radius: 16px;
+    padding: 8px 16px;
+    color: var(--gray-primary);
+    background-color: var(--gray-lighter);
+}
+
+.active {
+    color: var(--white-primary);
+    background-color: var(--purple-primary);
+}

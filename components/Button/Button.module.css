@@ -1,0 +1,10 @@
+.wrapper {
+    background-color: var(--purple-primary);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white-primary);
+    border: 0;
+    padding: 16px 0;
+}

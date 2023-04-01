@@ -1,0 +1,30 @@
+.categories {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    margin-right: -20px;
+    padding-right: 20px;
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+.homeTeasers {
+    display: flex;
+    gap: 16px;
+    height: 256px;
+    margin-right: -20px;
+    padding-right: 20px;
+    overflow-x: scroll;
+    margin-bottom: 48px;
+}
+
+.categories,
+.homeTeasers {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar,
+.homeTeasers::-webkit-scrollbar {
+    display: none;
+}

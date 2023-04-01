@@ -1,0 +1,16 @@
+.container {
+    height: 80px;
+    width: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container path {
+    fill: var(--gray-light);
+}
+
+.active>path {
+    fill: var(--purple-primary);
+}

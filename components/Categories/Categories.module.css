@@ -1,0 +1,15 @@
+.categories {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    margin-right: -20px;
+    padding-right: 20px;
+    overflow-y: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
