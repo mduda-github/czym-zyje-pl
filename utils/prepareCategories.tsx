@@ -1,4 +1,4 @@
-import { Category } from "@/pages/mocks/categories";
+import { Category } from "@/mocks/categories";
 
 export const prepareCategories = (categories: Category[], param: string) => {
     const foundIndex = categories.findIndex(el => el.slug === param);

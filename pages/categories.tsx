@@ -5,7 +5,7 @@ import styles from './categories.module.css'
 import Tile from "@/components/Tile/Tile";
 import { getData } from "@/utils/getData";
 import { useEffect, useState } from "react";
-import { Category } from "./mocks/categories";
+import { Category } from "../mocks/categories";
 
 const Categories: React.FunctionComponent = () => {
     const [categories, setCategories] = useState([]);

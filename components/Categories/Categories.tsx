@@ -1,7 +1,7 @@
 import * as React from "react";
 import Pill from "../Pill/Pill";
 import styles from "./Categories.module.css";
-import { Category } from "@/pages/mocks/categories";
+import { Category } from "@/mocks/categories";
 
 export interface CategoriesProps {
     categories: Category[];

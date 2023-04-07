@@ -6,7 +6,7 @@ import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
 import Toggle from "@/components/Toggle/Toggle";
 import { ArrowRightIcon } from "@/icons/ArrowRightIcon";
 import { SignOutIcon } from "@/icons/SignOutIcon";
-import { teasers } from "@/pages/mocks/teasers";
+import { teasers } from "@/mocks/teasers";
 import Head from "next/head";
 import styles from './profile.module.css'
 
