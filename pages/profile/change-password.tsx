@@ -8,9 +8,6 @@ import Head from "next/head";
 const ChangePassword: React.FunctionComponent = () => {
     return (
         <>
-            <Head>
-                <title>czym-zyje.pl - stay informed, stay ahead</title>
-            </Head>
             <InternalPage title='Change Password'>
                 <Input type="password" placeholder="Current Password" Icon={PasswordIcon} />
                 <Input type="password" placeholder="New Password" Icon={PasswordIcon} />

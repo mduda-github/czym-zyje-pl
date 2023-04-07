@@ -27,7 +27,7 @@ const Tile: React.FunctionComponent<TileProps> = (props) => {
     return asLink ? (
         <Link
             className={styles.wrapper}
-            href={`category/${name.substring(3).toLowerCase()}`}
+            href={`category/${name.toLowerCase()}`}
         >
             {name}
         </Link>

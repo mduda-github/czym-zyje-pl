@@ -6,9 +6,6 @@ import styles from './privacy.module.css'
 const TermsConditions: React.FunctionComponent = () => {
     return (
         <>
-            <Head>
-                <title>czym-zyje.pl - stay informed, stay ahead</title>
-            </Head>
             <InternalPage title="Terms & Conditions">
                 <div className={styles.text}>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

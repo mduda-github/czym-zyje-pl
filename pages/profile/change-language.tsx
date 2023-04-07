@@ -7,9 +7,6 @@ import Head from "next/head";
 const ChangeLanguage: React.FunctionComponent = () => {
     return (
         <>
-            <Head>
-                <title>czym-zyje.pl - stay informed, stay ahead</title>
-            </Head>
             <InternalPage title="Language">
                 <ProfileButton title="English" isSelected><CheckIcon /></ProfileButton>
                 <ProfileButton title="German"></ProfileButton>

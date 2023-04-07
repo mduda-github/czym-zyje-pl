@@ -1,0 +1,86 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.textWrapper {
+    z-index: 10;
+}
+
+.header {
+    padding: 48px 20px 24px 20px;
+    background-image: url("https://picsum.photos/390/428?random=1");
+    background-size: cover;
+    position: relative;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header path {
+    fill: #fff;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(34, 36, 47, 0) 0%, rgba(34, 36, 47, 0.48) 100%), linear-gradient(0deg, rgba(34, 36, 47, 0.16), rgba(34, 36, 47, 0.16));
+    z-index: 1;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #fff;
+    margin: 16px 0;
+}
+
+.content {
+    background-color: #fff;
+    padding: 24px 20px 20px;
+    border-radius: 24px 24px 0px 0px;
+    top: -24px;
+    position: relative;
+    z-index: 20;
+}
+
+.content>* {
+    margin: 0;
+    line-height: 24px;
+}
+
+.content>img {
+    border-radius: 16px;
+    margin-bottom: 16px;
+}
+
+.content>h3 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333647;
+}
+
+.content>p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #333647;
+}
+
+.icon {
+    align-self: end;
+    margin-top: 24px;
+}
+
+.pill {
+    width: fit-content;
+}
