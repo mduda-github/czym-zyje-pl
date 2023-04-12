@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react'
 import styles from './HomeTeaser.module.css'
 
@@ -9,10 +10,10 @@ export interface HomeTeaserProps {
 
 const HomeTeaser: React.FunctionComponent<HomeTeaserProps> = (props) => {
     const { title, category, imageUrl } = props;
-    return <div className={styles.container} style={{backgroundImage: `url(${imageUrl})`}}>
+    return <Link href="/article/co-on-powiedzial" className={styles.container} style={{ backgroundImage: `url(${imageUrl})` }}>
         <span className={styles.category}>{category}</span>
         <h3 className={styles.title}>{title}</h3>
-    </div>
+    </Link>
 }
 
 export default HomeTeaser;
