@@ -2,17 +2,18 @@ import * as React from "react";
 import clsx from "clsx";
 import styles from "./Tile.module.css";
 import Link from "next/link";
+import { Category } from "@prisma/client";
 
 type TileType = "primary" | "secondary" | "selected";
 
 export interface TileProps {
     type: TileType;
-    name: string;
+    category: Category;
     asLink?: boolean;
 }
 
 const Tile: React.FunctionComponent<TileProps> = (props) => {
-    const { type, name, asLink } = props;
+    const { type, category, asLink } = props;
 
     const [typeState, setTypeState] = React.useState(type);
 
@@ -27,9 +28,9 @@ const Tile: React.FunctionComponent<TileProps> = (props) => {
     return asLink ? (
         <Link
             className={styles.wrapper}
-            href={`category/${name.toLowerCase()}`}
+            href={`category/${category.slug}`}
         >
-            {name}
+            {category.symbol} {category.name}
         </Link>
     ) : (
         <div
@@ -39,7 +40,7 @@ const Tile: React.FunctionComponent<TileProps> = (props) => {
             })}
             onClick={handleOnClick}
         >
-            {name}
+            {category.symbol} {category.name}
         </div>
     );
 };

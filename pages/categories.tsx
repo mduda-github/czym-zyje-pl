@@ -1,24 +1,33 @@
-import Head from "next/head";
 import Page from "@/components/Page/Page";
 import NavigationBar from "@/components/NavigationBar/NavigationBar";
-import styles from './categories.module.css'
+import styles from "./categories.module.css";
 import Tile from "@/components/Tile/Tile";
-import { getData } from "@/utils/getData";
-import { useEffect, useState } from "react";
-import { Category } from "../mocks/categories";
+import useSWR from 'swr'
+import { fetcher } from "@/utils/fetcher";
+import { Category } from "@prisma/client";
 
 const Categories: React.FunctionComponent = () => {
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        getData('/api/categories').then(data => setCategories(data));
-    }, [])
+    const { data, error } = useSWR('/api/categories', fetcher)
 
     return (
         <>
-            <Page title="Categories" subtitle='Thousands of articles in each category'>
+            <Page
+                title="Categories"
+                subtitle="Thousands of articles in each category"
+            >
                 <div className={styles.container}>
-                    {categories.map((category: Category) => <Tile key={category.id} type='primary' name={category.name} asLink />)}
+                    {error ? <div>An error occured.</div> : null}
+
+                    {data ? data.map((category: Category, index: number) =>
+                        index !== 0 ? (
+                            <Tile
+                                key={category.id}
+                                type="primary"
+                                category={category}
+                                asLink
+                            />
+                        ) : null) : <div>Loading ...</div>
+                    }
                 </div>
             </Page>
             <NavigationBar />

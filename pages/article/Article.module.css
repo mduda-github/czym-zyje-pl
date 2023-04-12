@@ -15,8 +15,8 @@
 
 .header {
     padding: 48px 20px 24px 20px;
-    background-image: url("https://picsum.photos/390/428?random=1");
     background-size: cover;
+    background-position: center;
     position: relative;
     height: 375px;
     display: flex;
@@ -62,18 +62,30 @@
 .content>img {
     border-radius: 16px;
     margin-bottom: 16px;
+    width: 100%;
+    height: auto;
 }
 
-.content>h3 {
+.content>h2 {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 24px;
     color: #333647;
+    margin: 16px 0;
+    line-height: 32px;
+}
+
+.content>p:first-of-type {
+    font-weight: 900;
+    text-align: justify;
+    margin: 0;
+    line-height: 24px;
 }
 
 .content>p {
     font-weight: 400;
     font-size: 16px;
     color: #333647;
+    margin: 12px 0;
 }
 
 .icon {

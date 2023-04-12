@@ -2,12 +2,9 @@ import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import Page from "@/components/Page/Page";
 import ProfileButton from "@/components/ProfileButton/ProfileButton";
 import ProfileDetails from "@/components/ProfileDetails/ProfileDetails";
-import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
 import Toggle from "@/components/Toggle/Toggle";
 import { ArrowRightIcon } from "@/icons/ArrowRightIcon";
 import { SignOutIcon } from "@/icons/SignOutIcon";
-import { teasers } from "@/mocks/teasers";
-import Head from "next/head";
 import styles from './profile.module.css'
 
 const Profile: React.FunctionComponent = () => {

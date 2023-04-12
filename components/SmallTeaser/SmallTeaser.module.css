@@ -8,6 +8,7 @@
     width: 96px;
     border-radius: 12px;
     margin-right: 16px;
+    object-fit: cover;
 }
 
 .text-container {

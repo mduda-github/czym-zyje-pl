@@ -25,10 +25,10 @@ const Home: React.FunctionComponent = () => {
         <Input type='search' placeholder='Search' Icon={SearchIcon} />
         <Categories categories={categories} hrefPrefix={true} />
         <div className={styles.homeTeasers}>
-          {teasers.sliderTeasers.map(({ title, category, imageUrl }, index) => <HomeTeaser key={index} title={title} category={category} imageUrl={imageUrl} />)}
+          {teasers.map(({ title, category, imageUrl }, index) => <HomeTeaser key={index} title={title} category={category} imageUrl={imageUrl} />)}
         </div>
         <Section title="Recommended for you" link="/recommended">
-          {teasers.smallTeasers.map(({ title, category, imageUrl }, index) => <SmallTeaser key={index} title={title} category={category} imageUrl={imageUrl} />)}
+          {teasers.map(({ title, category, imageUrl }, index) => <SmallTeaser key={index} title={title} category={category} imageUrl={imageUrl} />)}
         </Section>
       </Page>
       <NavigationBar />

@@ -1,10 +1,11 @@
+import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { categories, Category } from "../../mocks/categories";
 
-const getCategories = (
-  req: NextApiRequest,
-  res: NextApiResponse<Category[]>
-) => {
+const prisma = new PrismaClient();
+
+const getCategories = async (req: NextApiRequest, res: NextApiResponse) => {
+  const categories = await prisma.category.findMany();
   res.status(200).json(categories);
 };
 

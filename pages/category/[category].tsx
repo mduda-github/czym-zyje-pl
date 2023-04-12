@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Page from "@/components/Page/Page";
 import Input from "@/components/Input/Input";
 import { SearchIcon } from "@/icons/SearchIcon";

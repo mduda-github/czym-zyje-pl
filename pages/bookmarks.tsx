@@ -3,7 +3,6 @@ import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import Page from "@/components/Page/Page";
 import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
 import { teasers } from "@/mocks/teasers";
-import Head from "next/head";
 
 const Bookmarks: React.FunctionComponent = () => {
     return (<>
