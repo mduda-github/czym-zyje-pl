@@ -1,0 +1,63 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Category {
+  id Int [pk, increment]
+  name String [not null]
+  slug String [not null]
+  symbol String
+  Teaser Teaser [not null]
+  Profile Profile
+  profileId Int
+}
+
+Table Teaser {
+  id Int [pk, increment]
+  title String [not null]
+  category Category [not null]
+  categoryId Int [unique, not null]
+  createdAt DateTime [default: `now()`, not null]
+  imageUrl String [not null]
+  slug String [not null]
+  content String [not null]
+  Profile Profile
+  profileId Int
+}
+
+Table User {
+  id Int [pk, increment]
+  email String [unique, not null]
+  firstName String [not null]
+  lastName String [not null]
+  password String [not null]
+  Profile Profile
+}
+
+Table Profile {
+  id Int [pk, increment]
+  user User [not null]
+  userId Int [unique, not null]
+  categories Category [not null]
+  bookmarks Teaser [not null]
+  language Language [not null]
+  languageId Int [not null]
+  darkMode Boolean [not null, default: false]
+}
+
+Table Language {
+  id Int [pk, increment]
+  code String [not null]
+  name String [not null]
+  Profile Profile [not null]
+}
+
+Ref: Category.profileId > Profile.id
+
+Ref: Teaser.categoryId > Category.id
+
+Ref: Teaser.profileId > Profile.id
+
+Ref: Profile.userId - User.id
+
+Ref: Profile.languageId > Language.id

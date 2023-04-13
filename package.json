@@ -24,6 +24,7 @@
     "typescript": "5.0.2"
   },
   "devDependencies": {
-    "prisma": "^4.12.0"
+    "prisma": "^4.12.0",
+    "prisma-dbml-generator": "^0.10.0"
   }
 }

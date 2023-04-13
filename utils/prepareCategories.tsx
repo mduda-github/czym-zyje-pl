@@ -1,6 +1,7 @@
-import { Category } from "@/mocks/categories";
+import { Category } from "@prisma/client";
 
-export const prepareCategories = (categories: Category[], param: string) => {
+
+export const prepareCategories = (categories: Category[] = [], param: string) => {
     const foundIndex = categories.findIndex(el => el.slug === param);
     const isFound = foundIndex !== -1;
     if (isFound) {

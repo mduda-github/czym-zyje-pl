@@ -1,28 +1,34 @@
 import Page from "@/components/Page/Page";
 import Input from "@/components/Input/Input";
 import { SearchIcon } from "@/icons/SearchIcon";
-import { Category } from "@/mocks/categories";
-import { teasers } from "@/mocks/teasers";
 import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import { useRouter } from "next/router";
 import CategoryTeaser from "@/components/CategoryTeaser/CategoryTeaser";
 import { prepareCategories } from "@/utils/prepareCategories";
 import Categories from "@/components/Categories/Categories";
-import { useEffect, useState } from "react";
-import { getData } from "@/utils/getData";
+import { fetcher } from "@/utils/fetcher";
+import { Category } from "@prisma/client";
+import useSWR from "swr";
+import { TeaserDTO } from "../api/teasers";
 
 const Category: React.FunctionComponent = () => {
   const { query } = useRouter();
   const { category } = query;
   const paramCategory = category?.toString().toLowerCase() || "";
 
-  const [categories, setCategories] = useState<Category[]>([]);
+  const { data: categoriesData, error: categoriesError } = useSWR<
+    Category[],
+    Error
+  >("/api/categories", fetcher);
+  const { data: teasersData, error: teasersError } = useSWR<TeaserDTO[], Error>(
+    "/api/teasers",
+    fetcher
+  );
 
-  useEffect(() => {
-    getData('/api/categories').then(data => setCategories(data));
-  }, [])
-
-  const { isFound, sortedCategories } = prepareCategories(categories, paramCategory);
+  const { isFound, sortedCategories } = prepareCategories(
+    categoriesData,
+    paramCategory
+  );
   const pageTitle = isFound ? paramCategory : "Category";
   const pageSubtitle = isFound
     ? "Discover things of this world"
@@ -33,7 +39,13 @@ const Category: React.FunctionComponent = () => {
       <Page title={pageTitle} subtitle={pageSubtitle}>
         <Input type="search" placeholder="Search" Icon={SearchIcon} />
         <Categories categories={sortedCategories} />
-        {teasers.smallTeasers.map(({ title, imageUrl }, index) => <CategoryTeaser key={index} title={title} imageUrl={imageUrl} />)}
+        {teasersData ? (
+          teasersData.map(({ title, imageUrl }, index) => (
+            <CategoryTeaser key={index} title={title} imageUrl={imageUrl} />
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
       </Page>
       <NavigationBar />
     </>

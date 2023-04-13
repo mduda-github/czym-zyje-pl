@@ -1,7 +1,7 @@
+import { Category } from "@prisma/client";
 import * as React from "react";
 import Pill from "../Pill/Pill";
 import styles from "./Categories.module.css";
-import { Category } from "@/mocks/categories";
 
 export interface CategoriesProps {
     categories: Category[];
