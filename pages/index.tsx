@@ -20,6 +20,7 @@ const Home: React.FunctionComponent = () => {
   return (
     <>
       <Page title='Browse' subtitle='Discover things of this world' >
+        <div>{process.env.DATABASE_URL}</div>
         <Input type='search' placeholder='Search' Icon={SearchIcon} />
         {categoriesData ? <Categories categories={categoriesData} hrefPrefix={true} /> : <div>Loading...</div>}
         <div className={styles.homeTeasers}>
