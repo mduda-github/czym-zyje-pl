@@ -7,7 +7,7 @@ export interface ButtonProps {
 
 const Button: React.FunctionComponent<ButtonProps> = (props) => {
     const { title } = props;
-    return <button className={styles.wrapper}>{title}</button>
+    return <button className={styles.wrapper} {...props}>{title}</button>
 };
 
 export default Button;
