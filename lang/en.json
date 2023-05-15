@@ -1,0 +1,19 @@
+{
+  "page.index.title": "Browse",
+  "page.index.description": "Discover things of this world",
+  "page.index.search": "Search",
+  "page.categories.title": "Categories",
+  "page.categories.description": "Thousands of articles in each category",
+  "page.bookmarks.title": "Bookmarks",
+  "page.bookmarks.description": "Saved articles to the library",
+  "page.bookmarks.emptyState": "You haven't saved any articles yet. Start reading and bookmarking them now",
+  "page.settings.title": "Settings",
+  "page.settings.language": "Language",
+  "page.settings.privacy": "Privacy",
+  "page.settings.termsConditions": "Terms & Conditions",
+  "page.language.title": "Language",
+  "page.language.pl": "Polish",
+  "page.language.es": "Spanish",
+  "page.language.en": "English",
+  "page.language.de": "German"
+}

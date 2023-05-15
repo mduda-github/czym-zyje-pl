@@ -1,0 +1,19 @@
+{
+  "page.index.title": "Durchsuchen",
+  "page.index.description": "Entdecke Dinge dieser Welt",
+  "page.index.search": "Suche",
+  "page.categories.title": "Kategorien",
+  "page.categories.description": "Tausende von Artikeln in jeder Kategorie",
+  "page.bookmarks.title": "Lesezeichen",
+  "page.bookmarks.description": "Gespeicherte Artikel in der Bibliothek",
+  "page.bookmarks.emptyState": "Du hast noch keine Artikel gespeichert. Fang jetzt an zu lesen und sie als Lesezeichen zu markieren.",
+  "page.settings.title": "Einstellungen",
+  "page.settings.language": "Sprache",
+  "page.settings.privacy": "Datenschutz",
+  "page.settings.termsConditions": "Geschäftsbedingungen",
+  "page.language.title": "Sprache",
+  "page.language.pl": "Polnisch",
+  "page.language.es": "Spanisch",
+  "page.language.en": "Englisch",
+  "page.language.de": "Deutsch"
+}

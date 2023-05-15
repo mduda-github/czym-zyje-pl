@@ -7,11 +7,12 @@ export interface ProfileButtonProps {
     title: string;
     href?: string;
     isSelected?: boolean;
+    locale?: string;
     children?: React.ReactNode;
 }
 
 const ProfileButton: React.FunctionComponent<ProfileButtonProps> = (props) => {
-    const { title, href, isSelected, children } = props;
+    const { title, href, isSelected, locale, children } = props;
 
     return href ? (
         <Link
@@ -19,6 +20,7 @@ const ProfileButton: React.FunctionComponent<ProfileButtonProps> = (props) => {
             className={clsx(styles.container, {
                 [styles.selected]: isSelected,
             })}
+            locale={locale}
         >
             {title}
             {children}

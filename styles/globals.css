@@ -9,6 +9,16 @@
   --shadow: rgba(172, 175, 195, 0.32);
 }
 
+body.dark-mode {
+  --gray-dark: #D2D4DC;
+  --gray-primary: #B4B7C3;
+  --gray-light: #7E839A;
+  --gray-lighter: #1E1F26;
+  --purple-primary: #A0A8FF;
+  --black-primary: #FFFFFF;
+  --white-primary: #1E1F26;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

@@ -3,27 +3,31 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient();
 
-export interface TeaserDTO extends Teaser {
-  category: {
-    name: string;
-  };
-}
+const getTeaserByCategoryId = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const { categoryId } = req.query;
 
-const getTeasers = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const teasers = await prisma.teaser.findMany({
       include: {
         category: {
           select: {
             name: true,
+            slug: true,
           },
         },
       },
+      where: {
+        categoryId: Number(categoryId),
+      },
     });
+
     res.status(200).json(teasers);
   } catch (err) {
     res.status(500).json({ error: "failed to load data" });
   }
 };
 
-export default getTeasers;
+export default getTeaserByCategoryId;

@@ -5,15 +5,20 @@ import Tile from "@/components/Tile/Tile";
 import useSWR from 'swr'
 import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";
+import { useIntl } from "react-intl";
 
 const Categories: React.FunctionComponent = () => {
     const { data, error } = useSWR('/api/categories', fetcher)
 
+    const intl = useIntl();
+    const title = intl.formatMessage({ id: "page.categories.title" });
+    const subtitle = intl.formatMessage({ id: "page.categories.description" });
+
     return (
         <>
             <Page
-                title="Categories"
-                subtitle="Thousands of articles in each category"
+                title={title}
+                subtitle={subtitle}
             >
                 <div className={styles.container}>
                     {error ? <div>An error occured.</div> : null}

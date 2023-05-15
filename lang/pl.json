@@ -1,0 +1,19 @@
+{
+  "page.index.title": "Przeglądaj",
+  "page.index.description": "Odkryj rzeczy tego świata",
+  "page.index.search": "Szukaj",
+  "page.categories.title": "Kategorie",
+  "page.categories.description": "Tysiące artykułów w każdej kategorii",
+  "page.bookmarks.title": "Zakładki",
+  "page.bookmarks.description": "Zapisane artykuły w bibliotece",
+  "page.bookmarks.emptyState": "Jeszcze nie zapisałeś żadnych artykułów. Zacznij teraz czytać i dodawać je do zakładek.",
+  "page.settings.title": "Ustawienia",
+  "page.settings.language": "Język",
+  "page.settings.privacy": "Prywatność",
+  "page.settings.termsConditions": "Warunki i zasady",
+  "page.language.title": "Język",
+  "page.language.pl": "Polski",
+  "page.language.es": "Hiszpański",
+  "page.language.en": "Angielski",
+  "page.language.de": "Niemiecki"
+}

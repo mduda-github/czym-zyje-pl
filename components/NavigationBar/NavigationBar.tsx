@@ -14,7 +14,7 @@ const NavigationBar: React.FunctionComponent = () => {
         <NavigationItem href="/" Icon={HomeIcon} isActive={pathname === "/"} />
         <NavigationItem href="/categories" Icon={CategoriesIcon} isActive={pathname === "/categories"} />
         <NavigationItem href="/bookmarks" Icon={BookmarkIcon} isActive={pathname === "/bookmarks"} />
-        <NavigationItem href="/profile" Icon={ProfileIcon} isActive={pathname === "/profile"} />
+        <NavigationItem href="/settings" Icon={ProfileIcon} isActive={pathname === "/settings"} />
     </div>
 }
 

@@ -1,5 +1,6 @@
 import { BookIcon } from '@/icons/BookIcon';
 import * as React from 'react'
+import { FormattedMessage } from 'react-intl';
 import styles from './EmptyStateBookmarks.module.css'
 
 const EmptyStateBookmarks: React.FunctionComponent = () => {
@@ -8,7 +9,7 @@ const EmptyStateBookmarks: React.FunctionComponent = () => {
             <BookIcon />
         </span>
         <p className={styles.text}>
-            You haven&apos;t saved any articles yet. Start reading and bookmarking them now.
+            <FormattedMessage id="page.bookmarks.emptyState" />
         </p>
     </div>
 }

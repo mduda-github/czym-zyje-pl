@@ -12,7 +12,7 @@ const InternalPage: React.FunctionComponent<InternalPageProps> = (props) => {
     const { title, children } = props;
     return <div className={styles.container}>
         <div className={styles.nav}>
-            <Link href="/profile"><LeftArrowIcon /></Link>
+            <Link href="/settings"><LeftArrowIcon /></Link>
             <h1 className={styles.title}>{title}</h1>
         </div>
         {children}

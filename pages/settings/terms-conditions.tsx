@@ -1,9 +1,13 @@
 import InternalPage from "@/components/InternalPage/InternalPage";
+import { useIntl } from "react-intl";
 import styles from './privacy.module.css'
 
-const Privacy: React.FunctionComponent = () => {
+
+const TermsConditions: React.FunctionComponent = () => {
+    const intl = useIntl();
+    const title = intl.formatMessage({ id: "page.settings.termsConditions" });
     return (
-        <InternalPage title="Privacy">
+        <InternalPage title={title}>
             <div className={styles.text}>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -35,4 +39,4 @@ const Privacy: React.FunctionComponent = () => {
     );
 };
 
-export default Privacy;
+export default TermsConditions;

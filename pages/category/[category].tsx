@@ -20,8 +20,11 @@ const Category: React.FunctionComponent = () => {
     Category[],
     Error
   >("/api/categories", fetcher);
+
+  const categoryId = categoriesData?.find(el => el.slug === paramCategory)?.id
+
   const { data: teasersData, error: teasersError } = useSWR<TeaserDTO[], Error>(
-    "/api/teasers",
+    `/api/category/${categoryId}`,
     fetcher
   );
 
@@ -40,8 +43,8 @@ const Category: React.FunctionComponent = () => {
         <Input type="search" placeholder="Search" Icon={SearchIcon} />
         <Categories categories={sortedCategories} />
         {teasersData ? (
-          teasersData.map(({ title, imageUrl }, index) => (
-            <CategoryTeaser key={index} title={title} imageUrl={imageUrl} />
+          teasersData.map(({ title, imageUrl, slug }, index) => (
+            <CategoryTeaser key={index} title={title} imageUrl={imageUrl} slug={slug} />
           ))
         ) : (
           <div>Loading...</div>

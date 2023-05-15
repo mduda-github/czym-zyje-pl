@@ -3,6 +3,7 @@ import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import Page from "@/components/Page/Page";
 import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
 import { fetcher } from "@/utils/fetcher";
+import { useIntl } from "react-intl";
 import useSWR from "swr";
 import { TeaserDTO } from "./api/teasers";
 
@@ -11,13 +12,19 @@ const Bookmarks: React.FunctionComponent = () => {
         "/api/teasers",
         fetcher
     );
+
+    const intl = useIntl();
+    const title = intl.formatMessage({ id: "page.bookmarks.title" });
+    const subtitle = intl.formatMessage({ id: "page.bookmarks.description" });
+
     return (<>
-        <Page title="Bookmarks" subtitle='Saved articles to the library'>
-            {teasersData ?
-                teasersData.map(({ title, category, imageUrl }, index) =>
-                    <SmallTeaser key={index} title={title} category={category.name} imageUrl={imageUrl} />
-                ) :
-                <EmptyStateBookmarks />
+        <Page title={title} subtitle={subtitle}>
+            {
+                teasersData ?
+                    teasersData.map(({ title, category, imageUrl, slug }, index) =>
+                        <SmallTeaser key={index} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />
+                    ) :
+                    <EmptyStateBookmarks />
             }
         </Page>
         <NavigationBar />
