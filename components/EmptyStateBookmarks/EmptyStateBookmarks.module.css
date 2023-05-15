@@ -10,7 +10,7 @@
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background-color: #EEF0FB;
+    background-color: var(--gray-lighter);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,6 +22,10 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #333647;
+    color: var(--black-primary);
     text-align: center;
+}
+
+.iconWrapper path {
+    fill: var(--purple-primary);
 }

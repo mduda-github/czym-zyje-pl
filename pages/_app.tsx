@@ -8,7 +8,7 @@ import Polish from "../lang/pl.json";
 import English from "../lang/en.json";
 import Spanish from "../lang/es.json";
 import German from "../lang/de.json";
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 const nutinoSans = Nunito_Sans({ weight: ['400', '600', '700', '900'], subsets: ['latin'] })
 
@@ -29,6 +29,17 @@ export default function App({ Component, pageProps }: AppProps) {
         return Polish;
     }
   }, [locale]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedTheme = window.localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme)
+        localStorage.setItem('theme', storedTheme);
+      }
+    }
+  }, [])
+
   return <IntlProvider locale={locale} messages={messages} defaultLocale={defaultLocale}>
     <main className={nutinoSans.className}>
       <Head>

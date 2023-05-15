@@ -2,6 +2,8 @@
   "page.index.title": "Browse",
   "page.index.description": "Discover things of this world",
   "page.index.search": "Search",
+  "page.index.all": "All",
+  "page.index.seeAll": "See All",
   "page.categories.title": "Categories",
   "page.categories.description": "Thousands of articles in each category",
   "page.bookmarks.title": "Bookmarks",

@@ -9,7 +9,7 @@
   --shadow: rgba(172, 175, 195, 0.32);
 }
 
-body.dark-mode {
+[data-theme="dark"] {
   --gray-dark: #D2D4DC;
   --gray-primary: #B4B7C3;
   --gray-light: #7E839A;
@@ -29,6 +29,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--white-primary);
 }
 
 a {

@@ -13,6 +13,7 @@
     margin-top: 24px;
     margin-bottom: 8px;
     text-transform: capitalize;
+    color: var(--black-primary);
 }
 
 .subtitle {

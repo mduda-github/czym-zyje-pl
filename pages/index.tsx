@@ -1,6 +1,4 @@
 import Page from '@/components/Page/Page'
-import Input from '@/components/Input/Input'
-import { SearchIcon } from '@/icons/SearchIcon'
 import styles from './index.module.css'
 import HomeTeaser from '@/components/HomeTeaser/HomeTeaser'
 import Section from '@/components/Section/Section'
@@ -13,28 +11,37 @@ import { Category } from '@prisma/client'
 import Error from 'next/error'
 import { TeaserDTO } from './api/teasers'
 import { useIntl } from 'react-intl'
+import SearchBar from '@/components/SearchBar/SearchBar'
 
 const Home: React.FunctionComponent = () => {
-  const { data: categoriesData, error: categoriesError } = useSWR<Category[], Error>('/api/categories', fetcher)
-  const { data: teasersData, error: teasersError } = useSWR<TeaserDTO[], Error>('/api/teasers', fetcher)
+  const { data: categoriesData } = useSWR<Category[], Error>('/api/categories?includeTeasers=true', fetcher)
+  const { data: teasersData } = useSWR<TeaserDTO[], Error>('/api/teasers?take=3', fetcher)
 
   const intl = useIntl();
 
   const title = intl.formatMessage({ id: "page.index.title" });
   const description = intl.formatMessage({ id: "page.index.description" });
   const search = intl.formatMessage({ id: "page.index.search" });
+  const all = intl.formatMessage({ id: "page.index.all" });
+
+  const allCategory = {
+    id: 0,
+    name: all,
+    slug: '',
+    symbol: '',
+  }
 
   return (
     <>
       <Page title={title} subtitle={description} >
-        <Input type='search' placeholder={search} Icon={SearchIcon} />
-        {categoriesData ? <Categories categories={categoriesData} hrefPrefix={true} /> : <div>Loading...</div>}
+        <SearchBar />
+        {categoriesData ? <Categories categories={[allCategory, ...categoriesData]} hrefPrefix={true} /> : <div>Loading...</div>}
         <div className={styles.homeTeasers}>
           {teasersData ? teasersData.map(({ id, title, imageUrl, category, slug }) => <HomeTeaser key={id} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />) : <div>Loading...</div>}
         </div>
-        <Section title="Recommended for you" link="/recommended">
-          {teasersData ? teasersData.map(({ id, title, imageUrl, category, slug }) => <SmallTeaser key={id} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />) : <div>Loading...</div>}
-        </Section>
+        {categoriesData ? categoriesData.map(category => <Section key={category.name} title={category.name} link={`/category/${category.slug}`}>
+          {category.Teaser?.map(({ id, title, imageUrl, slug }) => <SmallTeaser key={id} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />)}
+        </Section>) : null}
       </Page>
       <NavigationBar />
     </>

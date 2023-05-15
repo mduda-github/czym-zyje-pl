@@ -7,7 +7,26 @@ const getCategories = async (
   req: NextApiRequest,
   res: NextApiResponse<Category[]>
 ) => {
-  const categories = await prisma.category.findMany();
+  const { includeTeasers } = req.query;
+
+  const categories = await prisma.category.findMany({
+    orderBy: {
+      id: "asc",
+    },
+    include: includeTeasers
+      ? {
+          Teaser: {
+            take: 3,
+            select: {
+              id: true,
+              imageUrl: true,
+              slug: true,
+              title: true,
+            },
+          },
+        }
+      : undefined,
+  });
   res.status(200).json(categories);
 };
 

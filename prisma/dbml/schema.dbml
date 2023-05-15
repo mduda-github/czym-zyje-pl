@@ -7,8 +7,6 @@ Table Category {
   name String [not null]
   slug String [not null]
   symbol String
-  profileId Int
-  Profile Profile
   Teaser Teaser [not null]
 }
 
@@ -22,42 +20,6 @@ Table Teaser {
   content String [not null]
   profileId Int
   category Category [not null]
-  Profile Profile
 }
-
-Table User {
-  id Int [pk, increment]
-  email String [unique, not null]
-  firstName String [not null]
-  lastName String [not null]
-  password String [not null]
-  Profile Profile
-}
-
-Table Profile {
-  id Int [pk, increment]
-  userId Int [unique, not null]
-  languageId Int [not null]
-  darkMode Boolean [not null, default: false]
-  categories Category [not null]
-  language Language [not null]
-  user User [not null]
-  bookmarks Teaser [not null]
-}
-
-Table Language {
-  id Int [pk, increment]
-  code String [not null]
-  name String [not null]
-  Profile Profile [not null]
-}
-
-Ref: Category.profileId > Profile.id
 
 Ref: Teaser.categoryId > Category.id
-
-Ref: Teaser.profileId > Profile.id
-
-Ref: Profile.languageId > Language.id
-
-Ref: Profile.userId - User.id

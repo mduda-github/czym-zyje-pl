@@ -10,8 +10,10 @@ export interface TeaserDTO extends Teaser {
 }
 
 const getTeasers = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { take } = req.query;
   try {
     const teasers = await prisma.teaser.findMany({
+      take: Number(take),
       include: {
         category: {
           select: {

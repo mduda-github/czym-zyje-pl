@@ -11,7 +11,11 @@ const getTeaserByCategoryId = async (
 
   try {
     const teasers = await prisma.teaser.findMany({
-      include: {
+      select: {
+        id: true,
+        imageUrl: true,
+        slug: true,
+        title: true,
         category: {
           select: {
             name: true,

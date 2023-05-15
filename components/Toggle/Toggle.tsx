@@ -4,12 +4,26 @@ import styles from "./Toggle.module.css";
 import { useToggle } from "@/hooks/useToggle";
 
 const Toggle: React.FunctionComponent = () => {
-    const [toggleValue, toggle] = useToggle(false);
+    const [toggleValue, toggle] = useToggle();
+
+    React.useEffect(() => {
+        if (typeof window !== 'undefined' && window.localStorage) {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+            }
+
+            document.documentElement.setAttribute('data-theme', targetTheme)
+            localStorage.setItem('theme', targetTheme);
+        }
+    }, [toggleValue])
 
     return (
         <div
             className={clsx(styles.container, {
-                [styles.active]: toggleValue,
+                [styles.active]: toggleValue === "dark",
             })}
             onClick={toggle}
         >

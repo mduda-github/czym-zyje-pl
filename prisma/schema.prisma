@@ -12,13 +12,13 @@ datasource db {
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
-  name      String
-  slug      String
-  symbol    String?
-  profileId Int?
-  Profile   Profile? @relation(fields: [profileId], references: [id])
-  Teaser    Teaser[]
+  id     Int      @id @default(autoincrement())
+  name   String
+  slug   String
+  symbol String?
+  // profileId Int?
+  // Profile   Profile? @relation(fields: [profileId], references: [id])
+  Teaser Teaser[]
 }
 
 model Teaser {
@@ -31,32 +31,32 @@ model Teaser {
   content    String
   profileId  Int?
   category   Category @relation(fields: [categoryId], references: [id])
-  Profile    Profile? @relation(fields: [profileId], references: [id])
+  // Profile    Profile? @relation(fields: [profileId], references: [id])
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  firstName String
-  lastName  String
-  password  String
-  Profile   Profile?
-}
+// model User {
+//   id        Int      @id @default(autoincrement())
+//   email     String   @unique
+//   firstName String
+//   lastName  String
+//   password  String
+//   Profile   Profile?
+// }
 
-model Profile {
-  id         Int        @id @default(autoincrement())
-  userId     Int        @unique
-  languageId Int
-  darkMode   Boolean    @default(false)
-  categories Category[]
-  language   Language   @relation(fields: [languageId], references: [id])
-  user       User       @relation(fields: [userId], references: [id])
-  bookmarks  Teaser[]
-}
+// model Profile {
+//   id         Int        @id @default(autoincrement())
+//   userId     Int        @unique
+//   languageId Int
+//   darkMode   Boolean    @default(false)
+//   categories Category[]
+//   language   Language   @relation(fields: [languageId], references: [id])
+//   user       User       @relation(fields: [userId], references: [id])
+//   bookmarks  Teaser[]
+// }
 
-model Language {
-  id      Int       @id @default(autoincrement())
-  code    String
-  name    String
-  Profile Profile[]
-}
+// model Language {
+//   id      Int       @id @default(autoincrement())
+//   code    String
+//   name    String
+//   Profile Profile[]
+// }
