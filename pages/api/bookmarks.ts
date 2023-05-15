@@ -9,17 +9,28 @@ export interface TeaserDTO extends Teaser {
   };
 }
 
-const getTeasers = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { take } = req.query;
+const getBookmarkedTeasers = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const { b } = req.query;
+  const bookmarks =
+    b
+      ?.toString()
+      .split(",")
+      .map((el) => Number(el)) || [];
+
   try {
     const teasers = await prisma.teaser.findMany({
-      take: take ? Number(take) : undefined,
       include: {
         category: {
           select: {
             name: true,
           },
         },
+      },
+      where: {
+        id: { in: bookmarks },
       },
     });
     res.status(200).json(teasers);
@@ -28,4 +39,4 @@ const getTeasers = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default getTeasers;
+export default getBookmarkedTeasers;

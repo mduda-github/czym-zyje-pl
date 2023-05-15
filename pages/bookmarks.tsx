@@ -1,15 +1,31 @@
 import EmptyStateBookmarks from "@/components/EmptyStateBookmarks/EmptyStateBookmarks";
 import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import Page from "@/components/Page/Page";
+import ProfileButton from "@/components/ProfileButton/ProfileButton";
 import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
 import { fetcher } from "@/utils/fetcher";
+import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import useSWR from "swr";
 import { TeaserDTO } from "./api/teasers";
 
+const getStoredBookmarks = () => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+        return localStorage.getItem('bookmarks') || ""
+    }
+}
+
+const clearStoredBookmarks = () => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+        return localStorage.removeItem('bookmarks')
+    }
+}
+
 const Bookmarks: React.FunctionComponent = () => {
-    const { data: teasersData, error: teasersError, isLoading } = useSWR<TeaserDTO[], Error>(
-        "/api/teasers",
+    const router = useRouter();
+    const storedBookmarks = getStoredBookmarks();
+    const { data, error, isLoading } = useSWR<TeaserDTO[], Error>(
+        `/api/bookmarks?b=${storedBookmarks}`,
         fetcher
     );
 
@@ -17,15 +33,26 @@ const Bookmarks: React.FunctionComponent = () => {
     const title = intl.formatMessage({ id: "page.bookmarks.title" });
     const subtitle = intl.formatMessage({ id: "page.bookmarks.description" });
 
+    const clearBookmarks = (): void => {
+        clearStoredBookmarks();
+        router.push('/bookmarks')
+    }
+
     return (<>
         <Page title={title} subtitle={subtitle}>
+            {isLoading ? <div>Loading...</div> : null}
             {
-                teasersData ?
-                    teasersData.map(({ title, category, imageUrl, slug }, index) =>
-                        <SmallTeaser key={index} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />
-                    ) :
-                    <EmptyStateBookmarks />
+                data && data.length ?
+                    <>
+                        {data.map(({ title, category, imageUrl, slug }, index) =>
+                            <SmallTeaser key={index} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />
+                        )}
+                        <ProfileButton className="centered" title="Clear bookmarks" onClick={clearBookmarks}></ProfileButton>
+                    </> :
+                    null
             }
+            {data && data.length === 0 ? <EmptyStateBookmarks /> : null}
+
         </Page>
         <NavigationBar />
     </>

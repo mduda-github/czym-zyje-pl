@@ -101,3 +101,7 @@
 .pill {
     width: fit-content;
 }
+
+.bookmarked path {
+    fill: var(--purple-primary);
+}

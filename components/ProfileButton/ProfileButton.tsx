@@ -9,10 +9,12 @@ export interface ProfileButtonProps {
     isSelected?: boolean;
     locale?: string;
     children?: React.ReactNode;
+    className?: string;
+    onClick?: () => void;
 }
 
 const ProfileButton: React.FunctionComponent<ProfileButtonProps> = (props) => {
-    const { title, href, isSelected, locale, children } = props;
+    const { title, href, isSelected, locale, children, className, onClick } = props;
 
     return href ? (
         <Link
@@ -29,7 +31,9 @@ const ProfileButton: React.FunctionComponent<ProfileButtonProps> = (props) => {
         <div
             className={clsx(styles.container, {
                 [styles.selected]: isSelected,
+                [styles.centered]: className === 'centered',
             })}
+            onClick={onClick}
         >
             {title}
             {children}

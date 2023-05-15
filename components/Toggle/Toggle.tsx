@@ -1,31 +1,44 @@
 import * as React from "react";
 import clsx from "clsx";
 import styles from "./Toggle.module.css";
-import { useToggle } from "@/hooks/useToggle";
+
+
+const getStoredTheme = (): string => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+        return window.localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+    return "light"
+}
+
+const saveTheme = (): void => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = "light";
+
+        if (currentTheme === "light") {
+            targetTheme = "dark";
+        }
+
+        document.documentElement.setAttribute('data-theme', targetTheme)
+        localStorage.setItem('theme', targetTheme);
+    }
+}
 
 const Toggle: React.FunctionComponent = () => {
-    const [toggleValue, toggle] = useToggle();
+    const [theme, setTheme] = React.useState(getStoredTheme());
 
-    React.useEffect(() => {
-        if (typeof window !== 'undefined' && window.localStorage) {
-            const currentTheme = document.documentElement.getAttribute("data-theme");
-            let targetTheme = "light";
+    const toggleTheme = (): void => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    }
 
-            if (currentTheme === "light") {
-                targetTheme = "dark";
-            }
-
-            document.documentElement.setAttribute('data-theme', targetTheme)
-            localStorage.setItem('theme', targetTheme);
-        }
-    }, [toggleValue])
+    React.useEffect(() => saveTheme(), [theme])
 
     return (
         <div
             className={clsx(styles.container, {
-                [styles.active]: toggleValue === "dark",
+                [styles.active]: theme === "dark",
             })}
-            onClick={toggle}
+            onClick={toggleTheme}
         >
             <div className={styles.switch} />
         </div>

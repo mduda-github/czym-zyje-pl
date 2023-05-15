@@ -8,16 +8,30 @@ import Link from 'next/link';
 import useSWR from 'swr'
 import { fetcher } from '@/utils/fetcher';
 import parse from "html-react-parser";
+import React from 'react';
+import clsx from 'clsx';
+
 
 
 const Article: React.FunctionComponent = () => {
     const { query } = useRouter();
+    const [isBookmarked, setIsBookmarked] = React.useState(false);
     const { slug } = query;
 
     const slugArr = slug?.toString().split("-") ?? [];
     const id = slugArr[slugArr?.length - 1]
 
     const { data } = useSWR(`/api/teaser/${id}`, fetcher)
+
+    const onSaveBookmark = (id: string): void => {
+        if (typeof window !== 'undefined' && window.localStorage) {
+            const storedBookmarks = localStorage.getItem('bookmarks')
+            const newBookmarks = storedBookmarks?.length ? `${storedBookmarks},${id}` : id;
+            localStorage.setItem('bookmarks', newBookmarks)
+            setIsBookmarked(true);
+            console.log('isBookmarked', isBookmarked)
+        }
+    }
 
     return (
         data ?
@@ -26,7 +40,9 @@ const Article: React.FunctionComponent = () => {
                     <div className={styles.nav}>
                         <div className={styles.row}>
                             <Link href="/"><LeftArrowIcon /></Link>
-                            <BookmarkIcon />
+                            <BookmarkIcon className={clsx({
+                                [styles.bookmarked]: isBookmarked,
+                            })} onClick={() => onSaveBookmark(id)} />
                         </div>
                         <ShareIcon className={styles.icon} />
                     </div>
