@@ -15,11 +15,13 @@ import SearchBar from '@/components/molecules/SearchBar/SearchBar'
 interface CategoryWithTeasers extends Category {
   Teaser: Teaser[]
 }
+export interface HomeProps {
+  categoriesData: CategoryWithTeasers[];
+  teasersData: TeaserDTO[];
+}
 
-const Home: React.FunctionComponent = () => {
-  const { data: categoriesData } = useSWR<CategoryWithTeasers[], Error>('/api/categories?includeTeasers=true', fetcher)
-  const { data: teasersData } = useSWR<TeaserDTO[], Error>('/api/teasers?take=3', fetcher)
-
+const Home: React.FunctionComponent<HomeProps> = (props) => {
+  const { categoriesData, teasersData } = props;
   const intl = useIntl();
 
   const title = intl.formatMessage({ id: "page.index.title" });
@@ -48,6 +50,25 @@ const Home: React.FunctionComponent = () => {
       <NavigationBar />
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const categoriesResponse = await fetch('http://localhost:3000/api/categories?includeTeasers=true')
+  const teasersResponse = await fetch('http://localhost:3000/api/teasers?take=3')
+
+  if (!categoriesResponse || !teasersResponse) {
+    return { props: {} }
+  }
+
+  const categories = await categoriesResponse.json();
+  const teasers = await teasersResponse.json();
+
+  return {
+    props: {
+      categoriesData: categories,
+      teasersData: teasers
+    }
+  }
 }
 
 
