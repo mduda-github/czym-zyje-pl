@@ -6,6 +6,16 @@ const nextConfig = {
     defaultLocale: "pl",
     localeDetection: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "opcoeahloxxgvefxmyjl.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/images/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

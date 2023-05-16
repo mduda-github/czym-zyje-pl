@@ -1,4 +1,8 @@
-import axios from "axios";
-
-export const fetcher = async (url: string) =>
-  await axios.get(url).then((res) => res.data);
+export const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw Error("Faild to fetch data");
+  }
+  const data = await res.json();
+  return data;
+};

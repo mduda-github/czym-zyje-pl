@@ -1,13 +1,22 @@
 .container {
     position: relative;
     flex: 0 0 256px;
-    background-size: cover;
     border-radius: 12px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 12px;
+}
+
 
 .container::after {
     content: "";

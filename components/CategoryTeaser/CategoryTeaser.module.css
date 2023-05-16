@@ -9,7 +9,6 @@
 .image {
     border-radius: 16px 16px 0px 0px;
     height: 192px;
-    object-fit: cover;
 }
 
 .textWrapper {

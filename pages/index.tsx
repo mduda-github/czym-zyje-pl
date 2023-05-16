@@ -8,7 +8,6 @@ import Categories from '@/components/Categories/Categories'
 import { fetcher } from '@/utils/fetcher'
 import useSWR from 'swr'
 import { Category } from '@prisma/client'
-import Error from 'next/error'
 import { TeaserDTO } from './api/teasers'
 import { useIntl } from 'react-intl'
 import SearchBar from '@/components/SearchBar/SearchBar'
@@ -21,7 +20,6 @@ const Home: React.FunctionComponent = () => {
 
   const title = intl.formatMessage({ id: "page.index.title" });
   const description = intl.formatMessage({ id: "page.index.description" });
-  const search = intl.formatMessage({ id: "page.index.search" });
   const all = intl.formatMessage({ id: "page.index.all" });
 
   const allCategory = {

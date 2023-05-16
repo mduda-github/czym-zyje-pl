@@ -13,7 +13,7 @@ export interface SmallTeaserProps {
 const SmallTeaser: React.FunctionComponent<SmallTeaserProps> = (props) => {
     const { imageUrl, category, title, slug } = props;
     return <Link href={`article/${slug}`} className={styles.container}>
-        <img className={styles.image} src={imageUrl} alt={title} />
+        <Image className={styles.image} src={imageUrl} alt={title} width={96} height={96} />
         <div className={styles.textContainer}>
             <span className={styles.category}>{category}</span>
             <h3 className={styles.title}>{title}</h3>
