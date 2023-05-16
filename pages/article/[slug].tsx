@@ -10,24 +10,41 @@ import { fetcher } from '@/utils/fetcher';
 import parse from "html-react-parser";
 import React from 'react';
 import clsx from 'clsx';
+import { GetServerSideProps } from 'next';
+import { TeaserDTO } from '../api/bookmarks';
 
-
-
-const Article: React.FunctionComponent = () => {
-    const { query } = useRouter();
-    const [isBookmarked, setIsBookmarked] = React.useState(false);
-    const { slug } = query;
-
-    const slugArr = slug?.toString().split("-") ?? [];
+export const getServerSideProps: GetServerSideProps = async (props) => {
+    const { params } = props;
+    const slugArr = params?.slug?.toString().split("-") ?? [];
     const id = slugArr[slugArr?.length - 1]
+    const response = await fetch(`http://localhost:3000/api/teaser/${id}`)
 
-    const { data } = useSWR(`/api/teaser/${id}`, fetcher)
+    if (!response) {
+        return { props: {} }
+    }
 
-    const onSaveBookmark = (id: string): void => {
+    const teaser = await response.json();
+
+    return {
+        props: {
+            data: teaser
+        }
+    }
+};
+
+export interface ArticleProps {
+    data: TeaserDTO;
+}
+
+const Article: React.FunctionComponent<ArticleProps> = (props) => {
+    const { data } = props;
+    const [isBookmarked, setIsBookmarked] = React.useState(false);
+
+    const onSaveBookmark = (id: number): void => {
         if (typeof window !== 'undefined' && window.localStorage) {
             const storedBookmarks = localStorage.getItem('bookmarks')
             const newBookmarks = storedBookmarks?.length ? `${storedBookmarks},${id}` : id;
-            localStorage.setItem('bookmarks', newBookmarks)
+            localStorage.setItem('bookmarks', newBookmarks.toString())
             setIsBookmarked(true);
             console.log('isBookmarked', isBookmarked)
         }
@@ -42,7 +59,7 @@ const Article: React.FunctionComponent = () => {
                             <Link href="/"><LeftArrowIcon /></Link>
                             <BookmarkIcon className={clsx({
                                 [styles.bookmarked]: isBookmarked,
-                            })} onClick={() => onSaveBookmark(id)} />
+                            })} onClick={() => onSaveBookmark(data.id)} />
                         </div>
                         <ShareIcon className={styles.icon} />
                     </div>

@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 export interface TeaserDTO extends Teaser {
   category: {
     name: string;
+    slug: string;
   };
 }
 

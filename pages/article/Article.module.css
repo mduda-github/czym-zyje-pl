@@ -84,8 +84,12 @@
 .content>p {
     font-weight: 400;
     font-size: 16px;
-    color: var(--gray-primary);
+    color: var(--black-primary);
     margin: 12px 0;
+}
+
+[data-theme="dark"] .content>p {
+    color: var(--gray-primary);
 }
 
 .content>ul {
