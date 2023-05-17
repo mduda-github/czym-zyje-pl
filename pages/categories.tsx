@@ -9,7 +9,7 @@ import { useIntl } from "react-intl";
 import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
-    const response = await fetch('http://localhost:3000/api/categories')
+    const response = await fetch('https://czym-zyje-pl-ssg.vercel.app/api/categories')
 
     if (!response) {
         return { props: {} }

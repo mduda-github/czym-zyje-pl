@@ -14,7 +14,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { TeaserDTO } from '../api/bookmarks';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch('http://localhost:3000/api/teasers');
+    const res = await fetch('https://czym-zyje-pl-ssg.vercel.app/api/teasers');
     const teasers = await res.json();
     const paths = teasers.map((teaser: TeaserDTO) => ({
         params: { slug: teaser.slug },
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (props) => {
     const { params } = props;
     const slugArr = params?.slug?.toString().split("-") ?? [];
     const id = slugArr[slugArr?.length - 1]
-    const response = await fetch(`http://localhost:3000/api/teaser/${id}`)
+    const response = await fetch(`https://czym-zyje-pl-ssg.vercel.app/api/teaser/${id}`)
 
     if (!response) {
         return { props: {} }
