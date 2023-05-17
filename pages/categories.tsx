@@ -6,7 +6,7 @@ import { Category } from "@prisma/client";
 import { useIntl } from "react-intl";
 
 export async function getServerSideProps() {
-    const response = await fetch('http://localhost:3000/api/categories')
+    const response = await fetch('https://czym-zyje-pl-ssr.vercel.app/api/categories')
 
     if (!response) {
         return { props: {} }

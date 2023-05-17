@@ -53,8 +53,8 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
 }
 
 export async function getServerSideProps() {
-  const categoriesResponse = await fetch('http://localhost:3000/api/categories?includeTeasers=true')
-  const teasersResponse = await fetch('http://localhost:3000/api/teasers?take=3')
+  const categoriesResponse = await fetch('https://czym-zyje-pl-ssr.vercel.app/api/categories?includeTeasers=true')
+  const teasersResponse = await fetch('https://czym-zyje-pl-ssr.vercel.app/api/teasers?take=3')
 
   if (!categoriesResponse || !teasersResponse) {
     return { props: {} }
