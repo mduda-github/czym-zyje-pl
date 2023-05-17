@@ -18,7 +18,6 @@ Table Teaser {
   imageUrl String [not null]
   slug String [not null]
   content String [not null]
-  profileId Int
   category Category [not null]
 }
 

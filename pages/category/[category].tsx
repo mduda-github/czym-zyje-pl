@@ -10,6 +10,7 @@ import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";
 import useSWR from "swr";
 import { TeaserDTO } from "../api/teasers";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 const Category: React.FunctionComponent = () => {
   const { query } = useRouter();
@@ -40,7 +41,7 @@ const Category: React.FunctionComponent = () => {
   return (
     <>
       <Page title={pageTitle} subtitle={pageSubtitle}>
-        <Input type="search" placeholder="Search" Icon={SearchIcon} />
+        <SearchBar />
         <Categories categories={sortedCategories} />
         {teasersData ? (
           teasersData.map(({ title, imageUrl, slug }, index) => (

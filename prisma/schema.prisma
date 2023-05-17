@@ -29,7 +29,7 @@ model Teaser {
   imageUrl   String
   slug       String
   content    String
-  profileId  Int?
+  // profileId  Int?
   category   Category @relation(fields: [categoryId], references: [id])
   // Profile    Profile? @relation(fields: [profileId], references: [id])
 }

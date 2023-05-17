@@ -7,13 +7,17 @@ import NavigationBar from '@/components/NavigationBar/NavigationBar'
 import Categories from '@/components/Categories/Categories'
 import { fetcher } from '@/utils/fetcher'
 import useSWR from 'swr'
-import { Category } from '@prisma/client'
+import { Category, Teaser } from '@prisma/client'
 import { TeaserDTO } from './api/teasers'
 import { useIntl } from 'react-intl'
 import SearchBar from '@/components/SearchBar/SearchBar'
 
+interface CategoryWithTeasers extends Category {
+  Teaser: Teaser[]
+}
+
 const Home: React.FunctionComponent = () => {
-  const { data: categoriesData } = useSWR<Category[], Error>('/api/categories?includeTeasers=true', fetcher)
+  const { data: categoriesData } = useSWR<CategoryWithTeasers[], Error>('/api/categories?includeTeasers=true', fetcher)
   const { data: teasersData } = useSWR<TeaserDTO[], Error>('/api/teasers?take=3', fetcher)
 
   const intl = useIntl();

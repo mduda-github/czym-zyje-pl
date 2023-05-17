@@ -38,7 +38,7 @@ const Toggle: React.FunctionComponent = () => {
             className={clsx(styles.container, {
                 [styles.active]: theme === "dark",
             })}
-            onClick={toggleTheme}
+            onClick={() => toggleTheme}
         >
             <div className={styles.switch} />
         </div>
