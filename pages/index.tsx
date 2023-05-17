@@ -11,6 +11,8 @@ import { Category, Teaser } from '@prisma/client'
 import { TeaserDTO } from './api/teasers'
 import { useIntl } from 'react-intl'
 import SearchBar from '@/components/molecules/SearchBar/SearchBar'
+import fetch from 'node-fetch'
+import { GetStaticProps } from 'next'
 
 interface CategoryWithTeasers extends Category {
   Teaser: Teaser[]
@@ -52,7 +54,7 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
   )
 }
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const categoriesResponse = await fetch('http://localhost:3000/api/categories?includeTeasers=true')
   const teasersResponse = await fetch('http://localhost:3000/api/teasers?take=3')
 

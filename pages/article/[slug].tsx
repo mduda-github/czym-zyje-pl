@@ -10,10 +10,19 @@ import { fetcher } from '@/utils/fetcher';
 import parse from "html-react-parser";
 import React from 'react';
 import clsx from 'clsx';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { TeaserDTO } from '../api/bookmarks';
 
-export const getServerSideProps: GetServerSideProps = async (props) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+    const res = await fetch('http://localhost:3000/api/teasers');
+    const teasers = await res.json();
+    const paths = teasers.map((teaser: TeaserDTO) => ({
+        params: { slug: teaser.slug },
+    }));
+    return { paths, fallback: false };
+}
+
+export const getStaticProps: GetStaticProps = async (props) => {
     const { params } = props;
     const slugArr = params?.slug?.toString().split("-") ?? [];
     const id = slugArr[slugArr?.length - 1]

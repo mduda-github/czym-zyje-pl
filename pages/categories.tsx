@@ -6,8 +6,9 @@ import useSWR from 'swr'
 import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";
 import { useIntl } from "react-intl";
+import { GetStaticProps } from "next";
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch('http://localhost:3000/api/categories')
 
     if (!response) {
