@@ -8,3 +8,7 @@
     margin: 0;
     margin-bottom: 24px;
 }
+
+.text ol {
+    padding-left: 18px;
+}

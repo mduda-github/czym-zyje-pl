@@ -3,15 +3,33 @@ import type { AppProps } from 'next/app'
 import { Nunito_Sans } from 'next/font/google'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { FormattedMessage, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import Polish from "../lang/pl.json";
 import English from "../lang/en.json";
 import Spanish from "../lang/es.json";
 import German from "../lang/de.json";
-import { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
 const nutinoSans = Nunito_Sans({ weight: ['400', '600', '700', '900'], subsets: ['latin'] })
 
+const storeUserSetPreference = (pref: string) => {
+  localStorage.setItem("theme", pref);
+};
+
+const getUserSetPreference = (): string | null => {
+  return localStorage.getItem("theme");
+};
+
+const getMediaQueryPreference = (): string => {
+  const mediaQuery = "(prefers-color-scheme: dark)";
+  const mql = window.matchMedia(mediaQuery);
+  const hasPreference = typeof mql.matches === "boolean";
+
+  if (hasPreference) {
+    return mql.matches ? "dark" : "light";
+  }
+  return 'light'
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   const { locale = 'pl', defaultLocale } = useRouter();
@@ -30,15 +48,29 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [locale]);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const storedTheme = window.localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      if (storedTheme) {
-        document.documentElement.setAttribute('data-theme', storedTheme)
-        localStorage.setItem('theme', storedTheme);
-      }
+  const [theme, setTheme] = React.useState("light");
+
+  const handleThemeToggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light"
+    setTheme(newTheme)
+    if (typeof window !== 'undefined') {
+      storeUserSetPreference(newTheme)
+      window.document.body.dataset.theme = newTheme
     }
-  }, [])
+  }
+
+  useEffect(() => {
+    const userSetPreference = getUserSetPreference();
+    const mediaQueryPreference = getMediaQueryPreference();
+
+    if (userSetPreference) {
+      setTheme(userSetPreference)
+    } else {
+      setTheme(mediaQueryPreference)
+    }
+
+    window.document.body.dataset.theme = theme
+  }, [theme])
 
   return <IntlProvider locale={locale} messages={messages} defaultLocale={defaultLocale}>
     <main className={nutinoSans.className}>
@@ -51,7 +83,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <link rel="alternate" href="http://localhost:3000/en" hrefLang="en" />
       <link rel="alternate" href="http://localhost:3000/es" hrefLang="es" />
       <link rel="alternate" href="http://localhost:3000/de" hrefLang="de" />
-      <Component {...pageProps} />
+      <Component {...pageProps} theme={theme} handleThemeToggle={handleThemeToggle} />
     </main>
   </IntlProvider>
 }

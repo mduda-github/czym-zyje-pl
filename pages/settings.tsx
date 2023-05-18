@@ -8,19 +8,23 @@ import { SignOutIcon } from "@/icons/SignOutIcon";
 import { useIntl } from "react-intl";
 import styles from './settings.module.css'
 
-const Settings: React.FunctionComponent = () => {
+export interface SettingsProps {
+    theme: string;
+    handleThemeToggle: () => {}
+}
 
+const Settings: React.FunctionComponent<SettingsProps> = (props) => {
+    const { theme, handleThemeToggle } = props;
     const intl = useIntl();
     const title = intl.formatMessage({ id: "page.settings.title" });
     const language = intl.formatMessage({ id: "page.settings.language" });
     const privacy = intl.formatMessage({ id: "page.settings.privacy" });
     const termsConditions = intl.formatMessage({ id: "page.settings.termsConditions" });
-
     return (
         <>
             <Page title={title}>
                 <div className={styles.separator} />
-                <ProfileButton title="Dark Mode"><Toggle /></ProfileButton>
+                <ProfileButton title="Dark Mode"><Toggle theme={theme} handleThemeToggle={handleThemeToggle} /></ProfileButton>
                 <ProfileButton title={language} href="settings/change-language"><ArrowRightIcon /></ProfileButton>
                 <div className={styles.separator} />
                 <ProfileButton title={privacy} href="settings/privacy"><ArrowRightIcon /></ProfileButton>
