@@ -77,12 +77,12 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>czym-zyje.pl - stay informed, stay ahead</title>
       </Head>
-      <link rel="alternate" href="http://localhost:3000/" hrefLang="x-default" />
-      <link rel="alternate" href="http://localhost:3000/" hrefLang="pl" />
-      <link rel="alternate" href="http://localhost:3000/pl" hrefLang="pl" />
-      <link rel="alternate" href="http://localhost:3000/en" hrefLang="en" />
-      <link rel="alternate" href="http://localhost:3000/es" hrefLang="es" />
-      <link rel="alternate" href="http://localhost:3000/de" hrefLang="de" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/" hrefLang="x-default" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/" hrefLang="pl" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/pl" hrefLang="pl" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/en" hrefLang="en" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/es" hrefLang="es" />
+      <link rel="alternate" href="https://czym-zyje-pl.vercel.app/de" hrefLang="de" />
       <Component {...pageProps} theme={theme} handleThemeToggle={handleThemeToggle} />
     </main>
   </IntlProvider>

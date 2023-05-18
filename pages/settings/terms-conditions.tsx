@@ -8,10 +8,8 @@ import parse from "html-react-parser";
 
 const TermsConditions: React.FunctionComponent = () => {
     const intl = useIntl();
-    console.log(intl);
     const title = intl.formatMessage({ id: "page.settings.termsConditions" });
     const { data } = useSWR('/api/staticdata', fetcher)
-
 
     if (!data) {
         return <div>Loading...</div>
@@ -19,8 +17,6 @@ const TermsConditions: React.FunctionComponent = () => {
 
     const content = JSON.parse(data)
 
-    console.log(typeof intl.locale);
-    console.log(JSON.parse(data));
     return (
         <InternalPage title={title}>
             <div className={styles.text}>
