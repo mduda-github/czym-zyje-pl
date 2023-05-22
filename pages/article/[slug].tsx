@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { LeftArrowIcon } from "@/icons/LeftArrowIcon";
 import { BookmarkIcon } from "@/icons/BookmarkIcon";
 import { ShareIcon } from "@/icons/ShareIcon";
-import Pill from "@/components/Pill/Pill";
+import Pill from "@/components/atoms/Pill/Pill";
 import Link from 'next/link';
 import useSWR from 'swr'
 import { fetcher } from '@/utils/fetcher';

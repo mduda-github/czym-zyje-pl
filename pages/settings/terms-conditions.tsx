@@ -1,4 +1,4 @@
-import InternalPage from "@/components/InternalPage/InternalPage";
+import InternalPage from "@/components/templates/InternalPage/InternalPage";
 import { fetcher } from "@/utils/fetcher";
 import { useIntl } from "react-intl";
 import useSWR from "swr";

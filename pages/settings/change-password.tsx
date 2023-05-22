@@ -1,6 +1,6 @@
-import Button from "@/components/Button/Button";
-import Input from "@/components/Input/Input";
-import InternalPage from "@/components/InternalPage/InternalPage";
+import Button from "@/components/atoms/Button/Button";
+import Input from "@/components/molecules/Input/Input";
+import InternalPage from "@/components/templates/InternalPage/InternalPage";
 import { PasswordIcon } from "@/icons/PasswordIcon";
 
 const ChangePassword: React.FunctionComponent = () => {

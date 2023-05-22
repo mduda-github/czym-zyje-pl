@@ -1,4 +1,4 @@
-import InternalPage from "@/components/InternalPage/InternalPage";
+import InternalPage from "@/components/templates/InternalPage/InternalPage";
 import { useIntl } from "react-intl";
 import styles from './privacy.module.css'
 

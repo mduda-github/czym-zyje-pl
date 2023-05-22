@@ -1,11 +1,11 @@
-import Page from '@/components/Page/Page'
-import SmallTeaser from '@/components/SmallTeaser/SmallTeaser'
-import NavigationBar from '@/components/NavigationBar/NavigationBar'
+import Page from '@/components/templates/Page/Page'
+import SmallTeaser from '@/components/molecules/SmallTeaser/SmallTeaser'
+import NavigationBar from '@/components/organisms/NavigationBar/NavigationBar'
 import { fetcher } from '@/utils/fetcher'
 import useSWR from 'swr'
 import Error from 'next/error'
 import { TeaserDTO } from './api/teasers'
-import SearchBar from '@/components/SearchBar/SearchBar'
+import SearchBar from '@/components/molecules/SearchBar/SearchBar'
 import { useRouter } from 'next/router'
 
 const SearchPage: React.FunctionComponent = () => {

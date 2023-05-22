@@ -3,7 +3,7 @@ import { BookmarkIcon } from '@/icons/BookmarkIcon';
 import { CategoriesIcon } from '@/icons/CategoriesIcon';
 import { HomeIcon } from '@/icons/HomeIcon';
 import { ProfileIcon } from '@/icons/ProfileIcon';
-import NavigationItem from '../NagivationItem/NagivationItem';
+import NavigationItem from '../../atoms/NagivationItem/NagivationItem';
 import styles from './NavigationBar.module.css'
 import { useRouter } from 'next/router';
 

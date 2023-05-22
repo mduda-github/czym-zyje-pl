@@ -1,8 +1,8 @@
-import EmptyStateBookmarks from "@/components/EmptyStateBookmarks/EmptyStateBookmarks";
-import NavigationBar from "@/components/NavigationBar/NavigationBar";
-import Page from "@/components/Page/Page";
-import ProfileButton from "@/components/ProfileButton/ProfileButton";
-import SmallTeaser from "@/components/SmallTeaser/SmallTeaser";
+import EmptyStateBookmarks from "@/components/molecules/EmptyStateBookmarks/EmptyStateBookmarks";
+import NavigationBar from "@/components/organisms/NavigationBar/NavigationBar";
+import Page from "@/components/templates/Page/Page";
+import ProfileButton from "@/components/atoms/ProfileButton/ProfileButton";
+import SmallTeaser from "@/components/molecules/SmallTeaser/SmallTeaser";
 import { fetcher } from "@/utils/fetcher";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";

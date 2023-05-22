@@ -1,7 +1,7 @@
-import Page from "@/components/Page/Page";
-import NavigationBar from "@/components/NavigationBar/NavigationBar";
+import Page from "@/components/templates/Page/Page";
+import NavigationBar from "@/components/organisms/NavigationBar/NavigationBar";
 import styles from "./categories.module.css";
-import Tile from "@/components/Tile/Tile";
+import Tile from "@/components/atoms/Tile/Tile";
 import useSWR from 'swr'
 import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";

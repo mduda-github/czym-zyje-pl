@@ -1,8 +1,8 @@
-import NavigationBar from "@/components/NavigationBar/NavigationBar";
-import Page from "@/components/Page/Page";
-import ProfileButton from "@/components/ProfileButton/ProfileButton";
-import ProfileDetails from "@/components/ProfileDetails/ProfileDetails";
-import Toggle from "@/components/Toggle/Toggle";
+import NavigationBar from "@/components/organisms/NavigationBar/NavigationBar";
+import Page from "@/components/templates/Page/Page";
+import ProfileButton from "@/components/atoms/ProfileButton/ProfileButton";
+import ProfileDetails from "@/components/molecules/ProfileDetails/ProfileDetails";
+import Toggle from "@/components/atoms/Toggle/Toggle";
 import { ArrowRightIcon } from "@/icons/ArrowRightIcon";
 import { SignOutIcon } from "@/icons/SignOutIcon";
 import { useIntl } from "react-intl";

@@ -1,5 +1,5 @@
-import InternalPage from "@/components/InternalPage/InternalPage";
-import ProfileButton from "@/components/ProfileButton/ProfileButton";
+import InternalPage from "@/components/templates/InternalPage/InternalPage";
+import ProfileButton from "@/components/atoms/ProfileButton/ProfileButton";
 import { CheckIcon } from "@/icons/CheckIcon";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";

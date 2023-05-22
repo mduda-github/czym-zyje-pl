@@ -1,16 +1,16 @@
-import Page from "@/components/Page/Page";
-import Input from "@/components/Input/Input";
+import Page from "@/components/templates/Page/Page";
+import Input from "@/components/molecules/Input/Input";
 import { SearchIcon } from "@/icons/SearchIcon";
-import NavigationBar from "@/components/NavigationBar/NavigationBar";
+import NavigationBar from "@/components/organisms/NavigationBar/NavigationBar";
 import { useRouter } from "next/router";
-import CategoryTeaser from "@/components/CategoryTeaser/CategoryTeaser";
+import CategoryTeaser from "@/components/molecules/CategoryTeaser/CategoryTeaser";
 import { prepareCategories } from "@/utils/prepareCategories";
-import Categories from "@/components/Categories/Categories";
+import Categories from "@/components/molecules/Categories/Categories";
 import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";
 import useSWR from "swr";
 import { TeaserDTO } from "../api/teasers";
-import SearchBar from "@/components/SearchBar/SearchBar";
+import SearchBar from "@/components/molecules/SearchBar/SearchBar";
 
 const Category: React.FunctionComponent = () => {
   const { query } = useRouter();

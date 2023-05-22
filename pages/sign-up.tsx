@@ -1,6 +1,6 @@
-import Button from "@/components/Button/Button";
-import Input from "@/components/Input/Input";
-import Page from "@/components/Page/Page";
+import Button from "@/components/atoms/Button/Button";
+import Input from "@/components/molecules/Input/Input";
+import Page from "@/components/templates/Page/Page";
 import { EmailIcon } from "@/icons/EmailIcon";
 import { PasswordIcon } from "@/icons/PasswordIcon";
 import { ProfileIcon } from "@/icons/ProfileIcon";

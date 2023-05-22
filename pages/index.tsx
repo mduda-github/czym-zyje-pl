@@ -1,16 +1,16 @@
-import Page from '@/components/Page/Page'
+import Page from '@/components/templates/Page/Page'
 import styles from './index.module.css'
-import HomeTeaser from '@/components/HomeTeaser/HomeTeaser'
-import Section from '@/components/Section/Section'
-import SmallTeaser from '@/components/SmallTeaser/SmallTeaser'
-import NavigationBar from '@/components/NavigationBar/NavigationBar'
-import Categories from '@/components/Categories/Categories'
+import HomeTeaser from '@/components/molecules/HomeTeaser/HomeTeaser'
+import Section from '@/components/molecules/Section/Section'
+import SmallTeaser from '@/components/molecules/SmallTeaser/SmallTeaser'
+import NavigationBar from '@/components/organisms/NavigationBar/NavigationBar'
+import Categories from '@/components/molecules/Categories/Categories'
 import { fetcher } from '@/utils/fetcher'
 import useSWR from 'swr'
 import { Category, Teaser } from '@prisma/client'
 import { TeaserDTO } from './api/teasers'
 import { useIntl } from 'react-intl'
-import SearchBar from '@/components/SearchBar/SearchBar'
+import SearchBar from '@/components/molecules/SearchBar/SearchBar'
 
 interface CategoryWithTeasers extends Category {
   Teaser: Teaser[]
