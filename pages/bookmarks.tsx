@@ -47,7 +47,7 @@ const Bookmarks: React.FunctionComponent = () => {
                         {data.map(({ title, category, imageUrl, slug }, index) =>
                             <SmallTeaser key={index} title={title} category={category.name} imageUrl={imageUrl} slug={slug} />
                         )}
-                        <ProfileButton className="centered" title="Clear bookmarks" onClick={clearBookmarks}></ProfileButton>
+                        <ProfileButton className="centered" title="Wyczyść zakładki" onClick={clearBookmarks}></ProfileButton>
                     </> :
                     null
             }

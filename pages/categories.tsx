@@ -23,15 +23,12 @@ const Categories: React.FunctionComponent = () => {
                 <div className={styles.container}>
                     {error ? <div>An error occured.</div> : null}
 
-                    {data ? data.map((category: Category, index: number) =>
-                        index !== 0 ? (
-                            <Tile
-                                key={category.id}
-                                type="primary"
-                                category={category}
-                                asLink
-                            />
-                        ) : null) : <div>Loading ...</div>
+                    {data ? data.map((category: Category, index: number) => <Tile
+                        key={category.id}
+                        type="primary"
+                        category={category}
+                        asLink
+                    />) : <div>Loading ...</div>
                     }
                 </div>
             </Page>
