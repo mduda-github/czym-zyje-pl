@@ -7,6 +7,7 @@ import { fetcher } from "@/utils/fetcher";
 import { Category } from "@prisma/client";
 import { useIntl } from "react-intl";
 import { GetStaticProps } from "next";
+import fetch from 'node-fetch'
 
 export const getStaticProps: GetStaticProps = async () => {
     const response = await fetch('https://czym-zyje-pl-ssg.vercel.app/api/categories')
