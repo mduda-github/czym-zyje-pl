@@ -1,38 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# czym-zyje-pl - Next.js News Application
 
-## Getting Started
+**czym-zyje-pl** is a dynamic news application developed as a part of a university thesis project, utilizing the Next.js framework. This innovative application offers three distinct rendering modes: Client Side Rendering (CSR), Server Side Rendering (SSR), and Static Site Generation (SSG). It empowers users with the ability to stay informed by providing access to a vast array of news articles, organized into various categories. Additionally, it offers valuable features like article bookmarking, language selection, and a dark mode for an improved reading experience.
 
-First, run the development server:
+**Live Demo**: [czym-zyje-pl on Vercel](https://czym-zyje-pl.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Multiple Rendering Modes**: Choose between Client Side Rendering (CSR), Server Side Rendering (SSR), and Static Site Generation (SSG) to optimize performance and SEO for your news consumption.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **News Categories**: Access a diverse and comprehensive collection of news articles, thoughtfully categorized into topics of interest, ensuring you never miss a beat in the world of news.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- **Bookmark Articles**: Save your favorite articles for later perusal in the "Bookmark" section, allowing you to curate your own news library.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Language Selection**: Enjoy the flexibility of reading news articles in your preferred language with support for multiple languages, enabling a more personalized news reading experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Dark Mode**: Enhance your reading experience, especially during low-light conditions, with an easy-to-use dark mode option that reduces eye strain.
 
-## Learn More
+## Installation and Usage
 
-To learn more about Next.js, take a look at the following resources:
+To run **czym-zyje-pl** locally or deploy it, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone this repository to your local machine.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```shell
+   git clone https://github.com/your-username/czym-zyje-pl.git
+   ```
 
-## Deploy on Vercel
+2. Navigate to the project directory and install the necessary dependencies.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```shell
+   cd czym-zyje-pl
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Start the development server.
+
+   ```shell
+   npm run dev
+   ```
+
+4. Open your browser and access the application at `http://localhost:3000`.
+
+## Contributing
+
+We welcome contributions from the community. If you'd like to contribute to **czym-zyje-pl**, please follow these guidelines:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature or bug fix.
+
+3. Make your changes and test them thoroughly.
+
+4. Submit a pull request with a clear description of your changes.
+
+## Contact
+
+If you have any questions, suggestions, or feedback, feel free to open an issue in the repository.
+
+Thank you for using **czym-zyje-pl** for your news consumption needs! Stay informed, stay engaged.
+
+## Screenshots
+
+![Image](https://github.com/mduda-github/czym-zyje-pl/blob/main/assets/CzymZyjePL.png)
